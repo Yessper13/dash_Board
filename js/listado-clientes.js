@@ -1,6 +1,7 @@
 let clienteActual = null;
 let tablaCliente = document.querySelector("#table-cliente > tbody");
 
+
 document.addEventListener("DOMContentLoaded", ()=>{
     getDataClients();
 });
@@ -24,13 +25,13 @@ let getDataClients =  async ()=>{
             dataClientes.forEach((data, i) => {
                 let fila = document.createElement("tr");
                 fila.innerHTML =`
-                <td>${i+1}</td>
+                <td id="id">${i+1}</td>
                 <td>${data.nombre}</td>
                 <td>${data.apellido}</td>
                 <td>${data.email}</td>
                 <td>${data.celular}</td>
                 <td>
-                    <button class="btn btn-sm btn-warning btn-edit" data-id="${i}">
+                    <button class="btn btn-sm btn-warning btn-edit" data-id="${i}" onclick="editDataTable(${i})">
                         <i class="fas fa-edit"></i>
                     </button>
                     <button class="btn btn-sm btn-danger btn-delete" data-id="${i}">
@@ -43,14 +44,26 @@ let getDataClients =  async ()=>{
                 `;
                 tablaCliente.appendChild(fila);
             });
-            console.log(data)
 
         }
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 
 }
 
-
+let editDataTable = ( id )=>{
+alert("Editar Cliente: " + id);
+    let cliente = [];
+    let clienteUpdate = JSON.parse(localStorage.getItem("dataClientes"));
+    console.log(clienteUpdate);
+    if (clienteUpdate != null) {
+        cliente = clienteUpdate;
+    }
+    let singleCliente = cliente[id];
+    console.log(singleCliente);
+    localStorage.setItem("clienteEdit", JSON.stringify(singleCliente));
+    location.href = "../crear-cliente.html"
+    console.log("Cliente a editar: " + singleCliente.id);
+}
 

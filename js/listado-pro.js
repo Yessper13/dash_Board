@@ -83,7 +83,8 @@ let getTableData = async ()=>{
 
 
 //funcion para editar algun producto de la tabla
-let editDataTable = ( pos )=>{debugger
+let editDataTable = ( pos )=>{
+    alert("Editar Producto");
     let products = [];
     let productsSave = JSON.parse(localStorage.getItem("datosTabla"));
     if (productsSave != null) {

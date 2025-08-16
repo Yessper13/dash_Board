@@ -417,6 +417,7 @@ function verCliente(id) {
 }
 
 function editarCliente() {
+    alert("Editar Cliente: " + clienteActual.nombre);
     if (clienteActual) {
         // Redirigir a la página de edición con el ID del cliente
         window.location.href = `crear-cliente.html?id=${clienteActual.id_cliente}`;
@@ -435,6 +436,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<script src="js/crear-usuario.js"></script>
+
 </body>
 
 </html>
